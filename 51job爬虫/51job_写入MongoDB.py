@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Date    : 2018-07-20 10:12:42
-# @Author  : Your Name (you@example.org)
-# @Link    : http://example.org
-# @Version : $Id$
+# @file	   : demo
+# @Date    : 2018-07-02 09:09:46
+# @Author  : Destroyers (https://github.com/lguobin)
+# @Link    : https://github.com/lguobin
+# @Version : $1.0$
 
 import requests
 from pymongo import MongoClient
@@ -15,8 +16,7 @@ import urllib.request
 from sys import version_info
 from time import sleep as xxxxx
 
-
-class Myjob():
+class Destroyers_Myjob():
 	'''
 		# 抓取51job相关职位信息
 	'''
@@ -47,10 +47,19 @@ class Myjob():
 			frequency = True
 			line = 1
 			url_name = urllib.request.quote(self.name.encode('utf-8'))
-			header = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87'}
+			
+			header = {
+				'accept': "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+				'accept-language': "zh-CN,zh;q=0.8",
+				'cache-control': "no-cache",
+				'cookie': "miid=165455699654368GLfgXOlF-KOKx",
+				'upgrade-insecure-requests': "1",
+				'accept-encoding': "gzip, deflate, br"
+			}
+
+			# header = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87'}
 			while frequency:
 				url = 'http://search.51job.com/list/{},000000,0000,00,9,99,{},2,{}.html'.format(self.location, url_name.replace('%','%25'),line)
-				# url = 'http://search.51job.com/list/020000,000000,0000,00,9,99,{},2,{}.html'.format(url_name.replace('%','%25'),line)
 				req = requests.get(url,headers=header)
 				bs = BeautifulSoup(req.content,'html.parser')
 				page = bs.find('span',class_="td").string
@@ -133,5 +142,5 @@ class Myjob():
 
 
 if __name__=='__main__':
-	j = Myjob()
+	j = Destroyers_Myjob()
 	j._Get_Jobs_()
