@@ -629,9 +629,6 @@ autohome.com.cn###s2287
 
 cnbeta.com##.cbv,#artibody~*,#upcoming_box
 
-||img-ads.csdn.net/
-||rabc1.iteye.com/
-!csdn.net##div[class^=ad_],#ad_left,#ad_right,div.AD.mb-bg
 
 www.epinv.com###container>#sidebar~*,div.huadong,div.epinv_f
 ||www.epinv.com/wp-content/themes/ep/tu/
